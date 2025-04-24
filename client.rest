@@ -1,0 +1,138 @@
+### Variables
+@baseUrl = http://localhost:3000
+
+### User Endpoints
+
+### Get all users
+GET {{baseUrl}}/user?page=1&limit=10&order=DESC
+Content-Type: application/json
+
+### Get user by ID
+GET {{baseUrl}}/user/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+Content-Type: application/json
+
+### Create new user
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+
+### Update user
+PATCH {{baseUrl}}/user/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+Content-Type: application/json
+
+{
+  "name": "John Updated",
+  "email": "john.updated@example.com"
+}
+
+### Delete user
+DELETE {{baseUrl}}/user/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+Content-Type: application/json
+
+### Category Endpoints
+
+### Get all categories
+GET {{baseUrl}}/category?page=1&limit=10&order=DESC
+Content-Type: application/json
+
+### Get category by ID
+GET {{baseUrl}}/category/2
+Content-Type: application/json
+
+### Create new category
+POST {{baseUrl}}/category
+Content-Type: application/json
+
+{
+  "name": "Category 1"
+}
+
+### Update category
+PATCH {{baseUrl}}/category/1
+Content-Type: application/json  
+
+{
+  "name": "Category 1 Updated"
+}   
+
+### Delete category
+DELETE {{baseUrl}}/category/1
+Content-Type: application/json  
+
+### Transaction Endpoints
+
+### Get all transactions
+GET {{baseUrl}}/transaction?page=1&limit=10
+Content-Type: application/json
+
+### Get transaction by ID
+GET {{baseUrl}}/transaction/1
+Content-Type: application/json
+
+### Create new transaction
+POST {{baseUrl}}/transaction
+Content-Type: application/json
+
+{
+  "title": "Salary",
+  "type": "income",
+  "value": 5000,
+  "categoryId": "1",
+  "userId": "fa5f2ee4-0d09-47b5-86c5-efce9c70b443"
+}
+
+### Update transaction
+PATCH {{baseUrl}}/transaction/1
+Content-Type: application/json
+
+{
+  "title": "Updated Salary",
+  "value": 5500
+}
+
+### Delete transaction
+DELETE {{baseUrl}}/transaction/1
+Content-Type: application/json
+
+### Get total balance
+GET {{baseUrl}}/transaction/total-balance/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+Content-Type: application/json
+
+### Goal Endpoints
+
+### Get all goals
+GET {{baseUrl}}/goal?page=1&limit=10
+Content-Type: application/json
+
+### Get goal by ID
+GET {{baseUrl}}/goal/1
+Content-Type: application/json
+
+### Create new goal
+POST {{baseUrl}}/goal
+Content-Type: application/json
+
+{
+  "name": "Goal 1",
+  "goalValue": 1000,
+  "currentValue": 0,
+  "completed": false,
+  "userId": "fa5f2ee4-0d09-47b5-86c5-efce9c70b443"  
+}
+
+### Update goal
+PATCH {{baseUrl}}/goal/1
+Content-Type: application/json
+
+{
+  "currentValue": 
+  
+}
+
+### Delete goal
+DELETE {{baseUrl}}/goal/1
+Content-Type: application/json
