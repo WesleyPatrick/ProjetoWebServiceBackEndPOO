@@ -8,7 +8,7 @@ GET {{baseUrl}}/user?page=1&limit=10&order=DESC
 Content-Type: application/json
 
 ### Get user by ID
-GET {{baseUrl}}/user/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+GET {{baseUrl}}/user/6c1dc484-577e-496f-a262-022aa6dc8e2e
 Content-Type: application/json
 
 ### Create new user
@@ -16,21 +16,21 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john.doe@example.com"
+  "name": "John Doe 3",
+  "email": "john.doesse@example.com"
 }
 
 ### Update user
-PATCH {{baseUrl}}/user/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+PATCH {{baseUrl}}/user/6c1dc484-577e-496f-a262-022aa6dc8e2e
 Content-Type: application/json
 
 {
-  "name": "John Updated",
-  "email": "john.updated@example.com"
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com"
 }
 
 ### Delete user
-DELETE {{baseUrl}}/user/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+DELETE {{baseUrl}}/user/6c1dc484-577e-496f-a262-022aa6dc8e2e
 Content-Type: application/json
 
 ### Category Endpoints
@@ -40,7 +40,7 @@ GET {{baseUrl}}/category?page=1&limit=10&order=DESC
 Content-Type: application/json
 
 ### Get category by ID
-GET {{baseUrl}}/category/2
+GET {{baseUrl}}/category/1
 Content-Type: application/json
 
 ### Create new category
@@ -48,7 +48,7 @@ POST {{baseUrl}}/category
 Content-Type: application/json
 
 {
-  "name": "Category 1"
+  "name": "Categoria"
 }
 
 ### Update category
@@ -60,7 +60,7 @@ Content-Type: application/json
 }   
 
 ### Delete category
-DELETE {{baseUrl}}/category/1
+DELETE {{baseUrl}}/category/2
 Content-Type: application/json  
 
 ### Transaction Endpoints
@@ -79,14 +79,14 @@ Content-Type: application/json
 
 {
   "title": "Salary",
-  "type": "income",
+  "type": "expense",
   "value": 5000,
   "categoryId": "1",
-  "userId": "fa5f2ee4-0d09-47b5-86c5-efce9c70b443"
+  "userId": "31172ab1-2ef3-4b97-9542-cba3da9c07d5"
 }
 
 ### Update transaction
-PATCH {{baseUrl}}/transaction/1
+PATCH {{baseUrl}}/transaction/3
 Content-Type: application/json
 
 {
@@ -95,11 +95,11 @@ Content-Type: application/json
 }
 
 ### Delete transaction
-DELETE {{baseUrl}}/transaction/1
+DELETE {{baseUrl}}/transaction/3
 Content-Type: application/json
 
 ### Get total balance
-GET {{baseUrl}}/transaction/total-balance/fa5f2ee4-0d09-47b5-86c5-efce9c70b443
+GET {{baseUrl}}/transaction/total-balance/31172ab1-2ef3-4b97-9542-cba3da9c07d5
 Content-Type: application/json
 
 ### Goal Endpoints
@@ -109,7 +109,7 @@ GET {{baseUrl}}/goal?page=1&limit=10
 Content-Type: application/json
 
 ### Get goal by ID
-GET {{baseUrl}}/goal/1
+GET {{baseUrl}}/goal/5
 Content-Type: application/json
 
 ### Create new goal
@@ -117,22 +117,21 @@ POST {{baseUrl}}/goal
 Content-Type: application/json
 
 {
-  "name": "Goal 1",
-  "goalValue": 1000,
+  "name": "Viajar para São Paulo",
+  "goalValue": 100,
   "currentValue": 0,
   "completed": false,
-  "userId": "fa5f2ee4-0d09-47b5-86c5-efce9c70b443"  
+  "userId": "31172ab1-2ef3-4b97-9542-cba3da9c07d5"  
 }
 
 ### Update goal
-PATCH {{baseUrl}}/goal/1
+PATCH {{baseUrl}}/goal/5
 Content-Type: application/json
 
 {
-  "currentValue": 
-  
+  "currentValue": 50
 }
 
 ### Delete goal
-DELETE {{baseUrl}}/goal/1
+DELETE {{baseUrl}}/goal/5
 Content-Type: application/json

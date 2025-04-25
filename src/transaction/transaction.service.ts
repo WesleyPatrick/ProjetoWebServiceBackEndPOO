@@ -93,23 +93,13 @@ export class TransactionService {
   }
 
   async remove(id: number) {
-    const transaction = await this.findOne(id);
+    const transaction = await this.transactionRepository.findOneBy({
+      id,
+    });
     if (!transaction) {
       throw new NotFoundException('Transaction not found');
     }
-    return this.transactionRepository.delete(transaction);
-  }
-
-  async getTotalBalance() {
-    const totalBalance =
-      (await this.transactionRepository.sum('value', {
-        type: 'income',
-      })) || 0;
-    const totalExpense =
-      (await this.transactionRepository.sum('value', {
-        type: 'expense',
-      })) || 0;
-    return totalBalance - totalExpense;
+    return this.transactionRepository.remove(transaction);
   }
 
   async getTotalBalanceByUser(userId: string) {
@@ -133,6 +123,7 @@ export class TransactionService {
 
     return {
       userId,
+      userName: user.name,
       totalIncome,
       totalExpense,
       balance: totalIncome - totalExpense,

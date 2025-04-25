@@ -58,32 +58,43 @@ export class GoalService {
   }
 
   async update(id: number, updateGoalDto: UpdateGoalDto) {
-    const goal = await this.findOne(id);
+    const goal = await this.goalRepository.findOneBy({ id });
 
-    const partialGoalUpdateDto = {
-      currentValue: updateGoalDto.currentValue ?? goal.currentValue,
-      completed: updateGoalDto.completed ?? goal.completed,
-    };
+    if (!goal) {
+      throw new NotFoundException('Goal not found');
+    }
 
-    if (updateGoalDto.currentValue) {
-      if (updateGoalDto.currentValue > goal.goalValue) {
+    const newCurrentValue =
+      Number(goal.currentValue) + (updateGoalDto.currentValue ?? 0);
+
+    if (updateGoalDto.currentValue !== undefined) {
+      if (newCurrentValue > Number(goal.goalValue)) {
         throw new BadRequestException(
           'Current value cannot be greater than goal value',
         );
       }
-      if (updateGoalDto.currentValue >= goal.goalValue) {
-        throw new BadRequestException('Goal is already completed');
+
+      if (newCurrentValue === Number(goal.goalValue)) {
+        updateGoalDto.completed = true;
       }
     }
 
-    return await this.goalRepository.save({
+    const updatedGoal = {
       ...goal,
-      ...partialGoalUpdateDto,
-    });
+      currentValue: newCurrentValue,
+      completed: updateGoalDto.completed ?? goal.completed,
+    };
+
+    return await this.goalRepository.save(updatedGoal);
   }
 
   async remove(id: number) {
-    const goal = await this.findOne(id);
+    const goal = await this.goalRepository.findOneBy({
+      id,
+    });
+    if (!goal) {
+      throw new NotFoundException('Goal not found');
+    }
     return await this.goalRepository.remove(goal);
   }
 }

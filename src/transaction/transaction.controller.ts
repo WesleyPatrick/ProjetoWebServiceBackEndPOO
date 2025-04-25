@@ -47,7 +47,7 @@ export class TransactionController {
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.transactionService.remove(id);
+  remove(@Param('id') id: string) {
+    return this.transactionService.remove(+id);
   }
 }
